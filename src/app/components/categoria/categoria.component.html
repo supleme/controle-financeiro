@@ -1,0 +1,40 @@
+<div>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>
+      <p class="label-txt">CATEGORIA</p>
+      <input type="text" class="input" formControlName="name">
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <label>
+      <p class="label-txt">COR</p>
+      <input type="text" class="input" formControlName="color">
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <button type="submit" (click)="registerCategoria()">submit</button>
+  </form>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Cor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let categoria of categorias" scope="row">
+        <td>{{ categoria.id }}</td>
+        <td>{{ categoria.name }}</td>
+        <td>
+          <span [style.backgroundColor]="categoria.color" style="padding: 5px; border-radius: 5px;">
+            {{ categoria.color }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
