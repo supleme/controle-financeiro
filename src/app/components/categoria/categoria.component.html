@@ -2,7 +2,7 @@
   <h1 class="txt text-center">Cadastro categorias</h1>
   <form [formGroup]="form" (ngSubmit)="submit()">
     <label>
-      <p class="label-txt">CATEGORIA</p>
+      <p class="label-txt">NOME DA CATEGORIA</p>
       <input type="text" class="input" formControlName="name">
       <div class="line-box">
         <div class="line"></div>
@@ -22,7 +22,7 @@
     <thead>
       <tr class="bg-[#c9b977]">
         <th scope="col">ID</th>
-        <th scope="col">Nome</th>
+        <th scope="col">Categoria</th>
         <th scope="col">Cor</th>
         <th scope="col align-self-end">Ação</th>
       </tr>
