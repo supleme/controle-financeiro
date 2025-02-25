@@ -1,0 +1,49 @@
+<div>
+  <h1 class="txt text-center">Cadastro categorias</h1>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>
+      <p class="label-txt">NOME DA CATEGORIA</p>
+      <input type="text" class="input" formControlName="name">
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <label>
+      <p class="label-txt">COR</p>
+      <input type="text" class="input" formControlName="color">
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <button type="submit" class="submitForm">Cadastrar</button>
+  </form>
+
+  <table class="table txt text-center">
+    <thead>
+      <tr class="bg-[#c9b977]">
+        <th scope="col">ID</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Cor</th>
+        <th scope="col align-self-end">Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let categoria of categorias" scope="row">
+        <td>{{ categoria.id }}</td>
+        <td>{{ categoria.name }}</td>
+        <td>
+          <span [style.backgroundColor]="categoria.color">
+            ....
+          </span>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteCategoria(categoria.id)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+              <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+            </svg>Deletar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
