@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Categoria{
-  id: number | string;
+  id: string;
   name: string;
   color: string;
 }
@@ -18,7 +18,7 @@ export class DataService {
   constructor() { }
 
   getUser(user: string): Observable<any>{
-    return this.http.get<any>(this.url + 'user/?name=' + user);
+    return this.http.get<any>(this.url + '/user/?name=' + user);
   }
 
   getAllCategoria(): Observable<Categoria[]>{
@@ -28,5 +28,10 @@ export class DataService {
   addCategoria(categoria: { name: string; color: string }){
     const urlPostCategoria = this.url + '/categorias';
     return this.http.post(urlPostCategoria, categoria);
+  }
+
+  deleteCategoria(id: String){
+    const urlDeleteCategoria = this.url + '/categorias/' + id;
+    return this.http.delete(urlDeleteCategoria);
   }
 }

@@ -29,6 +29,7 @@ export class CategoriaComponent {
       next: (response) =>{
         console.log(response);
         this.buildTable();
+        this.form.reset();
           Swal.fire({
             title: "Categoria cadastrada com sucesso!",
             icon: "success",
@@ -44,7 +45,6 @@ export class CategoriaComponent {
         console.log('Erro ao cadastrar categoria ', error)
       }
     });
-
   }
 
   buildTable(){
@@ -59,7 +59,16 @@ export class CategoriaComponent {
     })
   }
 
-  registerCategoria(){
+  deleteCategoria(id: string){
+    this.data.deleteCategoria(id).subscribe({
+      next: (response) =>{
+        console.log(response);
+        this.buildTable();
+      },
+      error: (error) =>{
+        console.log('Erro ', error)
+      }
+    })
 
   }
 

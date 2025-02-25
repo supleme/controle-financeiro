@@ -7,5 +7,20 @@
     }
   ],
   "categorias": [
+    {
+      "id": "3db4",
+      "name": "Alimentação",
+      "color": "red"
+    },
+    {
+      "id": "118d",
+      "name": "Transporte",
+      "color": "Blue"
+    },
+    {
+      "id": "265f",
+      "name": "Escola",
+      "color": "Yellow"
+    }
   ]
 }
