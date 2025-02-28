@@ -16,11 +16,23 @@
       "id": "118d",
       "name": "Transporte",
       "color": "Blue"
-    },
+    }
+  ],
+  "tipoPagamento": [
     {
       "id": "265f",
-      "name": "Escola",
-      "color": "Yellow"
+      "name": "Crédito",
+      "color": "gray"
+    },
+    {
+      "id": "78c1",
+      "name": "Dinheiro",
+      "color": "Green"
+    },
+    {
+      "id": "5d6e",
+      "name": "Pix",
+      "color": "#88abebf2"
     }
   ]
 }

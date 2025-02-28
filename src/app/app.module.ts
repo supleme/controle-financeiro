@@ -1,4 +1,4 @@
-import { provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CategoriaComponent } from './components/categoria/categoria.component';
+import { TipoPagamentoComponent } from './components/tipo-pagamento/tipo-pagamento.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CategoriaComponent } from './components/categoria/categoria.component';
     FooterComponent,
     LoginComponent,
     HomeComponent,
-    CategoriaComponent
+    CategoriaComponent,
+    TipoPagamentoComponent
   ],
   imports: [
     NgbPaginationModule,
