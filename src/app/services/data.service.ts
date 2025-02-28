@@ -1,8 +1,14 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Categoria{
+  id: string;
+  name: string;
+  color: string;
+}
+
+export interface TipoPagamento{
   id: string;
   name: string;
   color: string;
@@ -14,8 +20,6 @@ export interface Categoria{
 export class DataService {
   private http = inject(HttpClient);
   private url = "http://localhost:3000"
-
-  constructor() { }
 
   getUser(user: string): Observable<any>{
     return this.http.get<any>(this.url + '/user/?name=' + user);
@@ -33,5 +37,19 @@ export class DataService {
   deleteCategoria(id: String){
     const urlDeleteCategoria = this.url + '/categorias/' + id;
     return this.http.delete(urlDeleteCategoria);
+  }
+
+  getAllTipoPagamento(): Observable<TipoPagamento[]>{
+    return this.http.get<any>(this.url + '/tipoPagamento')
+  }
+
+  addTipoPagamento(tipoPagamento: {name: string, color: string}){
+    const urlPostTipoPagamento = this.url + '/tipoPagamento';
+    return this.http.post(urlPostTipoPagamento, tipoPagamento);
+  }
+
+  deleteTipoPagamento(id: String){
+    const urlDeleteTipoPagamento = this.url + '/tipoPagamento/' + id;
+    return this.http.delete(urlDeleteTipoPagamento);
   }
 }

@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { Categoria, DataService } from '../../services/data.service';
-import Swal from 'sweetalert2';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DataService, TipoPagamento } from '../../services/data.service';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-categoria',
+  selector: 'app-tipo-pagamento',
   standalone: false,
-  templateUrl: './categoria.component.html',
-  styleUrl: './categoria.component.css'
+  templateUrl: './tipo-pagamento.component.html',
+  styleUrl: './tipo-pagamento.component.css'
 })
-export class CategoriaComponent {
+export class TipoPagamentoComponent {
   form: FormGroup;
-  categorias: Categoria[] = [];
+  tiposPagamento: TipoPagamento[] = [];
 
   constructor(private data: DataService,
               private formBuilder: FormBuilder,
@@ -19,16 +19,16 @@ export class CategoriaComponent {
     this.form = this.formBuilder.group({
       "name": new FormControl(null, [Validators.required]),
       "color": new FormControl(null, [Validators.required]),
-    })
+    });
     this.buildTable();
   }
 
   submit(){
     const novaCategoria = {name: this.form.get("name")?.value, color: this.form.get("color")?.value};
-    this.data.addCategoria(novaCategoria).subscribe({
+    this.data.addTipoPagamento(novaCategoria).subscribe({
       next: (response) =>{
         console.log(response);
-        this.buildTable();
+        this.buildTable()
         this.form.reset();
           Swal.fire({
             title: "Categoria cadastrada com sucesso!",
@@ -45,13 +45,13 @@ export class CategoriaComponent {
         console.log('Erro ao cadastrar categoria ', error)
       }
     });
-  }
+    }
 
   buildTable(){
-    this.data.getAllCategoria().subscribe({
+    this.data.getAllTipoPagamento().subscribe({
       next: (response) =>{
-        this.categorias = response;
-        console.log(this.categorias);
+        this.tiposPagamento = response;
+        console.log(this.tiposPagamento);
       },
       error: (error) =>{
         console.log('Erro ', error)
@@ -59,8 +59,8 @@ export class CategoriaComponent {
     })
   }
 
-  deleteCategoria(id: string){
-    this.data.deleteCategoria(id).subscribe({
+  deleteTipoPagamento(id: string){
+    this.data.deleteTipoPagamento(id).subscribe({
       next: (response) =>{
         console.log(response);
         this.buildTable();
